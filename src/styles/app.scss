@@ -1,0 +1,33 @@
+
+@import 'normalize';
+@import 'Color';
+@import 'Button';
+
+html,
+body {
+  background : #222;
+  color      : #ededed;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  height     : 100%;
+  margin     : 0;
+  padding    : 0;
+  width      : 100%;
+}
+.container {
+  margin-top: 10%;
+  text-align: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#speed {
+  font-size: 7rem;
+}
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
