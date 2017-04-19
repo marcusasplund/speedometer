@@ -83,7 +83,7 @@ export async function release (fly) {
     }
   }).target(target)
   await fly.source(`${target}/**/*`).rev({
-    ignores: ['.html', '.png', '.svg', '.ico', '.json', '.txt', '.ttf', '.otf', '.woff', '.woff2']
+    ignores: ['.html', '.png', '.svg', '.ico', '.json', '.txt', '.ttf', '.otf', '.woff', '.woff2', '.xml']
   }).revManifest({dest: releaseTarget, trim: target}).revReplace().target(releaseTarget)
   await fly.source(`${releaseTarget}/*.html`).htmlmin().target(releaseTarget)
   await fly.serial(['cache'])
