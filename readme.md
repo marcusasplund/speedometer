@@ -9,7 +9,7 @@
 
 ## [demo](https://pap.as/speedo/)
 
-Simple html5 speedometer
+Simple html5 speedometer, with altitude
 
 Offline support with service worker
 
