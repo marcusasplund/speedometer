@@ -1,4 +1,4 @@
-# todo
+# Speedometer
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/marcusasplund/speedometer.svg)](https://greenkeeper.io/)
 [![GitHub issues](https://img.shields.io/github/issues/marcusasplund/speedometer.svg)](https://github.com/marcusasplund/speedometer/issues)
@@ -6,8 +6,6 @@
 [![dependencies](https://david-dm.org/marcusasplund/speedometer.svg)](https://david-dm.org/marcusasplund/speedometer)
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
-# Speedometer
 
 ## [demo](https://pap.as/speedo/)
 
@@ -22,9 +20,9 @@ Offline support with service worker
 
     $ cd speedometer
 
-    $ yarn OR $ npm install
+    $ yarn
 
-    $ npm start
+    $ yarn start
 ````
 
 Open up application at http://localhost:4000/ in browser
@@ -32,7 +30,7 @@ Open up application at http://localhost:4000/ in browser
 ## build a release
 
 ````bash
-    $ npm run build
+    $ yarn run build
 
 ````
 This will generate a release directory with your minified/rev'd assets.
@@ -41,7 +39,7 @@ This will generate a release directory with your minified/rev'd assets.
 ## serve static
 
 ````bash
-    $ npm run serve
+    $ yarn run serve
 
 ````
 

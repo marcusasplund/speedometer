@@ -18,7 +18,7 @@ const src = {
 export async function cache (fly) {
   await fly.source('release/**/*.{js,html,css,png,jpg,gif,woff,woff2}')
     .precache({
-      cacheId: 'speedometer',
+      cacheId: 'speedometer-v2',
       stripPrefix: 'release/'
     })
     .target('release')
