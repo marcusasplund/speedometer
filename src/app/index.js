@@ -7,7 +7,7 @@ const altitudeUnitEl = document.getElementById('altitudeUnitEl')
 const altitudeEl = document.getElementById('altitudeEl')
 const errorEl = document.getElementById('errorEl')
 
-let index = 0
+let unitIndex = 0
 let altitudeIndex = 0
 
 const units = [{
@@ -38,7 +38,7 @@ const options = {
 }
 
 const success = (e) => {
-  speed.textContent = parseInt(e.coords.speed * units[index].factor)
+  speed.textContent = parseInt(e.coords.speed * units[unitIndex].factor)
   altitude.textContent = parseInt(e.coords.altitude * altitudeUnits[altitudeIndex].factor)
 }
 
@@ -51,7 +51,7 @@ navigator.geolocation.watchPosition(success, error, options)
 
 const toggleUnit = (e) => {
   if (e.target.tagName === 'BUTTON') {
-    index = +e.target.id
+    unitIndex = +e.target.id
     unitEl.textContent = units[+e.target.id].unit
   }
 }

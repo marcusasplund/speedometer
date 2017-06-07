@@ -18,7 +18,7 @@ const src = {
 export async function cache (fly) {
   await fly.source('release/**/*.{js,html,css,png,jpg,gif,woff,woff2}')
     .precache({
-      cacheId: 'speedometer-v2',
+      cacheId: 'speedometer-v3',
       stripPrefix: 'release/'
     })
     .target('release')
@@ -40,7 +40,7 @@ export async function js (fly) {
   await fly.source('src/app/index.js').rollup({
     rollup: {
       plugins: [
-        require('rollup-plugin-buble')({jsx: 'h'}),
+        require('rollup-plugin-buble')(),
         require('rollup-plugin-commonjs')(),
         require('rollup-plugin-replace')({
           'process.env.NODE_ENV': JSON.stringify(isWatching ? 'development' : 'production')
@@ -98,7 +98,7 @@ export async function watch (fly) {
   // start server
   browserSync({
     server: target,
-    logPrefix: 'speedo',
+    logPrefix: 'speedometer',
     port: process.env.PORT || 4000,
     middleware: [
       require('connect-history-api-fallback')()
