@@ -24,12 +24,13 @@
     <span id="speed">0</span>
     <span id="unit">km/h</span>
   </h1>
+    <button id="start" class="button button-outline">Start</button>
   <p id="errorEl"></p>
   <div id="unitToggles">
-    <button id="0">km/h</button>
-    <button id="1">knots</button>
-    <button id="2">mph</button>
-    <button id="3">m/s</button>
+    <button data-index="0">km/h</button>
+    <button data-index="1">knots</button>
+    <button data-index="2">mph</button>
+    <button data-index="3">m/s</button>
   </div>
   <button id="showAltitude">altitude</button>
   <div id="altitudeEl" class="hidden">
@@ -37,8 +38,8 @@
       <span id="altitude">0</span>
       <span id="altitudeUnitEl">m</span>
     </h1>
-    <button id="0">m</button>
-    <button id="1">feet</button>
+    <button data-index="0">m</button>
+    <button data-index="1">feet</button>
   </div>
   <script src="./index.js"></script>
 </body>

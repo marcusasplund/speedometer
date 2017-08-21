@@ -6,6 +6,7 @@ const altitude = document.getElementById('altitude')
 const altitudeUnitEl = document.getElementById('altitudeUnitEl')
 const altitudeEl = document.getElementById('altitudeEl')
 const errorEl = document.getElementById('errorEl')
+const start = document.getElementById('start')
 
 let unitIndex = 0
 let altitudeIndex = 0
@@ -47,12 +48,15 @@ const error = (e) => {
   unitEl.textContent = ':-('
 }
 
-navigator.geolocation.watchPosition(success, error, options)
+const startSpeedo = () => {
+  navigator.geolocation.watchPosition(success, error, options)
+  start.classList.toggle('hidden')
+}
 
 const toggleUnit = (e) => {
   if (e.target.tagName === 'BUTTON') {
-    unitIndex = +e.target.id
-    unitEl.textContent = units[+e.target.id].unit
+    unitIndex = +e.target.dataset.index
+    unitEl.textContent = units[+e.target.dataset.index].unit
   }
 }
 
@@ -62,13 +66,14 @@ const toggleAltitudeVisibility = (e) => {
 
 const toggleAltitudeUnit = (e) => {
   if (e.target.tagName === 'BUTTON') {
-    altitudeIndex = +e.target.id
+    altitudeIndex = +e.target.dataset.index
     altitudeUnitEl.textContent = altitudeUnits[altitudeIndex].unit
   }
 }
 
 document.getElementById('unitToggles').addEventListener('click', toggleUnit, false)
 document.getElementById('showAltitude').addEventListener('click', toggleAltitudeVisibility, false)
-document.getElementById('altitudeEl').addEventListener('click', toggleAltitudeUnit, false)
+altitudeEl.addEventListener('click', toggleAltitudeUnit, false)
+start.addEventListener('click', startSpeedo, false)
 
 registerWorker()
