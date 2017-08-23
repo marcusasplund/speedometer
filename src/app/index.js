@@ -50,7 +50,7 @@ const error = (e) => {
 
 const startSpeedo = () => {
   navigator.geolocation.watchPosition(success, error, options)
-  start.classList.toggle('hidden')
+  start.remove()
 }
 
 const toggleUnit = (e) => {
