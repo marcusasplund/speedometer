@@ -1,5 +1,5 @@
 
-import {registerWorker} from './register-worker'
+import {registerWorker} from './utils/register-worker'
 const speed = document.getElementById('speed')
 const unitEl = document.getElementById('unit')
 const altitude = document.getElementById('altitude')

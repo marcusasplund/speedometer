@@ -32,12 +32,8 @@ export async function copyStaticAssets (task, o) {
   await task.source(o.src || src.staticAssets).target(target)
 }
 
-export async function vendors (task) {
-  await task.source(src.vendor).concat('vendor.js').target(`${target}`)
-}
-
 export async function js (task) {
-  await task.source('src/app/index.js').rollup({
+  await task.source('src/index.js').rollup({
     rollup: {
       plugins: [
         require('rollup-plugin-buble')(),
@@ -63,12 +59,17 @@ export async function styles (task) {
   await task.source(src.scss).sass({
     outputStyle: 'compressed',
     includePaths: []
-  }).autoprefixer().target(`${target}`)
+  })
+  .postcss({
+    plugins: [require('autoprefixer')({
+      browsers: ['last 2 versions']
+    })]
+  }).target(`${target}`)
 }
 
 export async function build (task) {
     // TODO add linting
-  await task.serial(['clean', 'copyStaticAssets', 'styles', 'js', 'vendors'])
+  await task.serial(['clean', 'copyStaticAssets', 'styles', 'js'])
 }
 
 export async function release (task) {
