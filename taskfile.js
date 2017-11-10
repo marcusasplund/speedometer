@@ -1,27 +1,32 @@
 const browserSync = require('browser-sync')
-
 let isWatching = false
+let isServer = false
+
+export async function reload (task) {
+  isWatching && isServer && browserSync.reload()
+}
 
 // some source/dest consts
 const target = 'dist'
 const releaseTarget = 'release'
+const applicationId = 'speedometer-v5'
+
 const src = {
-  js: 'src/**/*.js',
-  scss: 'src/styles/app.scss',
+  js: 'src/*.js',
+  scss: 'src/styles/*.scss',
   staticAssets: [
     'src/static/**/*.*',
     'src/*.html'
-  ],
-  vendor: []
+  ]
 }
 
 export async function cache (task) {
   await task.source('release/**/*.{js,html,css,png,jpg,gif,woff,woff2}')
     .precache({
-      cacheId: 'speedometer-v3',
+      cacheId: `${applicationId}`,
       stripPrefix: 'release/'
     })
-    .target('release')
+    .target(`${releaseTarget}`)
 }
 
 export async function clean (task) {
@@ -36,8 +41,15 @@ export async function js (task) {
   await task.source('src/index.js').rollup({
     rollup: {
       plugins: [
-        require('rollup-plugin-buble')(),
-        require('rollup-plugin-commonjs')(),
+        require('rollup-plugin-buble')({
+          jsx: 'h',
+          transforms: {
+            dangerousForOf: true
+          }
+        }),
+        require('rollup-plugin-commonjs')({
+          include: 'node_modules/**'
+        }),
         require('rollup-plugin-replace')({
           'process.env.NODE_ENV': JSON.stringify(isWatching ? 'development' : 'production')
         }),
@@ -58,7 +70,7 @@ export async function js (task) {
 export async function styles (task) {
   await task.source(src.scss).sass({
     outputStyle: 'compressed',
-    includePaths: []
+    includePaths: ['./node_modules']
   })
   .postcss({
     plugins: [require('autoprefixer')({
@@ -84,7 +96,7 @@ export async function release (task) {
     }
   }).target(target)
   await task.source(`${target}/**/*`).rev({
-    ignores: ['.html', '.png', '.svg', '.ico', '.json', '.txt', '.ttf', '.otf', '.woff', '.woff2', '.xml']
+    ignores: ['.html', '.png', '.svg', '.ico', '.xml', '.json', '.txt', '.ttf', '.otf', '.woff', '.woff2']
   }).revManifest({dest: releaseTarget, trim: target}).revReplace().target(releaseTarget)
   await task.source(`${releaseTarget}/*.html`).htmlmin().target(releaseTarget)
   await task.serial(['cache'])
@@ -96,17 +108,18 @@ export async function watch (task) {
   await task.watch(src.js, ['js', 'reload'])
   await task.watch(src.scss, ['styles', 'reload'])
   await task.watch(src.staticAssets, ['copyStaticAssets', 'reload'])
-  // start server
+  await task.start('serve')
+}
+
+export async function serve (task) {
+  isServer = true
   browserSync({
+    logPrefix: `${applicationId}`,
     server: target,
-    logPrefix: 'speedometer',
     port: process.env.PORT || 4000,
+    cors: false,
     middleware: [
       require('connect-history-api-fallback')()
     ]
   })
-}
-
-export async function reload (task) {
-  isWatching && browserSync.reload()
 }

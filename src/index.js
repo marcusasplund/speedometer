@@ -76,4 +76,8 @@ document.getElementById('showAltitude').addEventListener('click', toggleAltitude
 altitudeEl.addEventListener('click', toggleAltitudeUnit, false)
 start.addEventListener('click', startSpeedo, false)
 
-registerWorker()
+// Register service worker if not on localhost
+const local = window.location.host.startsWith('localhost')
+if ('serviceWorker' in navigator && !local) {
+  registerWorker()
+}
