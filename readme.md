@@ -3,7 +3,7 @@
 [![Greenkeeper badge](https://badges.greenkeeper.io/marcusasplund/speedometer.svg)](https://greenkeeper.io/)
 [![GitHub issues](https://img.shields.io/github/issues/marcusasplund/speedometer.svg)](https://github.com/marcusasplund/speedometer/issues)
 [![Build status](https://travis-ci.org/marcusasplund/speedometer.svg?branch=master)](https://travis-ci.org/marcusasplund/speedometer)
-[![dependencies](https://david-dm.org/marcusasplund/speedometer.svg)](https://david-dm.org/marcusasplund/speedometer)
+[![dependencies](https://david-dm.org/marcusasplund/speedometer?type=dev.svg)](https://david-dm.org/marcusasplund/speedometer?type=dev)
 
 [![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
