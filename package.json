@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/marcusasplund/speedometer#readme",
   "devDependencies": {
+    "babel-eslint": "^8.1.2",
     "workbox-build": "^2.1.2",
     "workbox-cli": "^2.1.2",
     "node-sass": "^4.7.2",
