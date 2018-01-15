@@ -1,5 +1,4 @@
-
-import {registerWorker} from './utils/register-worker'
+import './styles/app.scss'
 const speed = document.getElementById('speed')
 const unitEl = document.getElementById('unit')
 const altitude = document.getElementById('altitude')
@@ -75,9 +74,3 @@ document.getElementById('unitToggles').addEventListener('click', toggleUnit, fal
 document.getElementById('showAltitude').addEventListener('click', toggleAltitudeVisibility, false)
 altitudeEl.addEventListener('click', toggleAltitudeUnit, false)
 start.addEventListener('click', startSpeedo, false)
-
-// Register service worker if not on localhost
-const local = window.location.host.startsWith('localhost')
-if ('serviceWorker' in navigator && !local) {
-  registerWorker()
-}
