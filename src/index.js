@@ -1,4 +1,3 @@
-import './styles/app.scss'
 const speed = document.getElementById('speed')
 const unitEl = document.getElementById('unit')
 const altitude = document.getElementById('altitude')
@@ -54,8 +53,8 @@ const startSpeedo = () => {
 
 const toggleUnit = (e) => {
   if (e.target.tagName === 'BUTTON') {
-    unitIndex = +e.target.dataset.index
-    unitEl.textContent = units[+e.target.dataset.index].unit
+    unitIndex = +e.target.value
+    unitEl.textContent = units[unitIndex].unit
   }
 }
 
@@ -65,7 +64,7 @@ const toggleAltitudeVisibility = (e) => {
 
 const toggleAltitudeUnit = (e) => {
   if (e.target.tagName === 'BUTTON') {
-    altitudeIndex = +e.target.dataset.index
+    altitudeIndex = +e.target.value
     altitudeUnitEl.textContent = altitudeUnits[altitudeIndex].unit
   }
 }
