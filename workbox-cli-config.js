@@ -1,5 +1,5 @@
 module.exports = {
-  globDirectory: 'dist/',
+  globDirectory: 'build/',
   globPatterns: ['*.{html,js}'],
   swDest: 'build/sw.js',
   globIgnores: [
