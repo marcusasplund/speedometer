@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "start": "standard && parcel src/index.html -p 3000 --open",
-    "build": "standard && parcel build src/index.html -d build --public-url ./ && workbox generateSW"
+    "build": "rm -rf /release && standard && parcel build src/index.html -d build --public-url ./"
   },
   "main": "src/app/index.js",
   "repository": {
