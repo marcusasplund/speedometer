@@ -10,25 +10,25 @@ let unitIndex = 0
 let altitudeIndex = 0
 
 const units = [{
-  'factor': 3.6,
-  'unit': 'km/h'
+  factor: 3.6,
+  unit: 'km/h'
 }, {
-  'factor': 1.94384449,
-  'unit': 'knots'
+  factor: 1.94384449,
+  unit: 'knots'
 }, {
-  'factor': 2.23693629,
-  'unit': 'mph'
+  factor: 2.23693629,
+  unit: 'mph'
 }, {
-  'factor': 1,
-  'unit': 'm/s'
+  factor: 1,
+  unit: 'm/s'
 }]
 
 const altitudeUnits = [{
-  'factor': 1,
-  'unit': 'm'
+  factor: 1,
+  unit: 'm'
 }, {
-  'factor': 3.28,
-  'unit': 'feet'
+  factor: 3.28,
+  unit: 'feet'
 }]
 
 const options = {
