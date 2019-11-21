@@ -15,19 +15,26 @@
   <link rel="manifest" href="./manifest.webmanifest">
   <meta name="theme-color" content="#ffffff">
   <style>
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
   button {
-    background-color: #9b4dca;
-    border: 0.1rem solid #9b4dca;
+    border: 1px solid #ededed;
+    padding: 0.5rem;
+    background: #222;
     border-radius: 0.4rem;
-    color: #fff;
+    color: #ededed;
     cursor: pointer;
     display: inline-block;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    height: 3rem;
+    height: 2.5rem;
     letter-spacing: 0.1rem;
-    line-height: 3rem;
-    padding: 0 1.0rem;
+    line-height: 2rem;
+    padding: 0 0.5rem;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
@@ -37,9 +44,9 @@
 
   button:focus,
   button:hover {
-    background-color: #606c76;
-    border-color: #606c76;
-    color: #fff;
+    background-color: #ededed;
+    border-color: #fff;
+    color: #222;
     outline: 0;
   }
 
@@ -59,7 +66,7 @@
   }
   #altitude,
   #speed {
-    font-size: 7rem;
+    font-size: 8rem;
   }
   .hidden {
     visibility: hidden;
@@ -67,30 +74,49 @@
     -webkit-transition: visibility 0s 0.4s, opacity 0.4s linear;
     transition: visibility 0s 0.4s, opacity 0.4s linear;
   }
+  .invisible {
+    display: none;
+  }
+  footer {
+  	padding: 1rem;
+  }
+  .container {
+  	min-height: 90vh;
+  	display: grid;
+  	grid-template-rows: 1fr auto;
+  	grid-template-columns: 100vw;
+  }
+  #showAltitude {
+    margin-left: 10px;
+  }
   </style>
 </head>
 <body>
-  <h1>
-    <span id="speed">0</span>
-    <span id="unit">km/h</span>
-  </h1>
-    <button id="start">Start</button>
-  <p id="errorEl"></p>
-  <div id="unitToggles">
-    <button value="0">km/h</button>
-    <button value="1">knots</button>
-    <button value="2">mph</button>
-    <button value="3">m/s</button>
-  </div>
-  <button id="showAltitude">altitude</button>
-  <div id="altitudeEl" class="hidden">
-    <h1>
-      <span id="altitude">0</span>
-      <span id="altitudeUnitEl">m</span>
-    </h1>
-    <button value="0">m</button>
-    <button value="1">feet</button>
-  </div>
+  <div class="container">
+    <main>
+      <h1>
+        <span id="speed">0</span>
+        <span id="unit">km/h</span>
+      </h1>
+        <button id="start">Start</button>
+      <p id="errorEl" class="invisible"></p>
+      <div id="altitudeEl" class="hidden">
+        <h1>
+          <span id="altitude">0</span>
+          <span id="altitudeUnitEl">m</span>
+        </h1>
+      </div>
+    </main>
+    <footer>
+      <button class="speedToggles" value="0">km/h</button>
+      <button class="speedToggles" value="1">knots</button>
+      <button class="speedToggles" value="2">mph</button>
+      <button class="speedToggles" value="3">m/s</button>
+      <button id="showAltitude">altitude</button>
+      <button class="altToggles" value="0">m</button>
+      <button class="altToggles" value="1">feet</button>
+    </footer>
+  <div>
   <script src="./index.js" async></script>
   <script>
   // TODO: remove hacky hack https://github.com/parcel-bundler/parcel/issues/2080

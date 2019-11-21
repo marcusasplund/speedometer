@@ -1,10 +1,9 @@
-const speed = document.getElementById('speed')
-const unitEl = document.getElementById('unit')
-const altitude = document.getElementById('altitude')
-const altitudeUnitEl = document.getElementById('altitudeUnitEl')
-const altitudeEl = document.getElementById('altitudeEl')
-const errorEl = document.getElementById('errorEl')
-const start = document.getElementById('start')
+const speed = document.querySelector('#speed')
+const unitEl = document.querySelector('#unit')
+const altitude = document.querySelector('#altitude')
+const altitudeUnitEl = document.querySelector('#altitudeUnitEl')
+const altitudeEl = document.querySelector('#altitudeEl')
+const errorEl = document.querySelector('#errorEl')
 
 let unitIndex = 0
 let altitudeIndex = 0
@@ -39,6 +38,8 @@ const options = {
 const success = (e) => {
   speed.textContent = parseInt(e.coords.speed * units[unitIndex].factor)
   altitude.textContent = parseInt(e.coords.altitude * altitudeUnits[altitudeIndex].factor)
+  errorEl.textContent = ''
+  unitEl.textContent = units[unitIndex].unit
 }
 
 const error = (e) => {
@@ -52,10 +53,8 @@ const startSpeedo = () => {
 }
 
 const toggleUnit = (e) => {
-  if (e.target.tagName === 'BUTTON') {
-    unitIndex = +e.target.value
-    unitEl.textContent = units[unitIndex].unit
-  }
+  unitIndex = +e.target.value
+  unitEl.textContent = units[unitIndex].unit
 }
 
 const toggleAltitudeVisibility = (e) => {
@@ -63,13 +62,18 @@ const toggleAltitudeVisibility = (e) => {
 }
 
 const toggleAltitudeUnit = (e) => {
-  if (e.target.tagName === 'BUTTON') {
-    altitudeIndex = +e.target.value
-    altitudeUnitEl.textContent = altitudeUnits[altitudeIndex].unit
-  }
+  altitudeIndex = +e.target.value
+  altitudeUnitEl.textContent = altitudeUnits[altitudeIndex].unit
 }
 
-document.getElementById('unitToggles').addEventListener('click', toggleUnit, false)
-document.getElementById('showAltitude').addEventListener('click', toggleAltitudeVisibility, false)
-altitudeEl.addEventListener('click', toggleAltitudeUnit, false)
-start.addEventListener('click', startSpeedo, false)
+document.querySelectorAll('.speedToggles').forEach(item => {
+  item.addEventListener('click', toggleUnit, false)
+})
+
+document.querySelector('#showAltitude').addEventListener('click', toggleAltitudeVisibility, false)
+
+document.querySelectorAll('.altToggles').forEach(item => {
+  item.addEventListener('click', toggleAltitudeUnit, false)
+})
+
+document.querySelector('#start').addEventListener('click', startSpeedo, false)
