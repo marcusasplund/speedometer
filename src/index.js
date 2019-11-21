@@ -4,6 +4,7 @@ const altitude = document.querySelector('#altitude')
 const altitudeUnitEl = document.querySelector('#altitudeUnitEl')
 const altitudeEl = document.querySelector('#altitudeEl')
 const errorEl = document.querySelector('#errorEl')
+const start = document.querySelector('#start')
 
 let unitIndex = 0
 let altitudeIndex = 0
@@ -76,4 +77,4 @@ document.querySelectorAll('.altToggles').forEach(item => {
   item.addEventListener('click', toggleAltitudeUnit, false)
 })
 
-document.querySelector('#start').addEventListener('click', startSpeedo, false)
+start.addEventListener('click', startSpeedo, false)
